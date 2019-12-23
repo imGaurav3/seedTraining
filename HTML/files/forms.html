@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Forms</title>
+</head>
+<body>
+    <form action="" method="" enctype="multipart/form-data">
+
+        Name:
+        <input type="text" required>
+        <br>
+
+        Email:
+        <input type="email" required>
+        <br>
+
+        Age:
+        <input type="number" required min="18">
+        <br>
+
+        Password:
+        <input type="password" required>
+        <br>
+
+        Gender:
+        <br>
+        Male:<input type="radio" name="gender"> &nbsp;
+        Female:<input type="radio" name="gender">
+        <br>
+
+        Region:
+        <select>
+            <option value="n">north</option>
+            <option value="s">south</option>
+            <option value="e">east</option>
+            <option value="w">west</option>
+        </select>
+        <br>
+        Address:
+        <textarea cols="30" rows="10"></textarea>
+        <br>
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
