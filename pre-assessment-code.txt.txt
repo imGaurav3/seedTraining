@@ -1,0 +1,28 @@
+Name: Ashish Gaurav
+import java.util.Scanner;
+
+public class ReverseString {
+
+	public static void main(String[] args) {
+		
+		System.out.println("Enter String");
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		sc.close();
+		StringBuilder rev1 = new StringBuilder();
+		
+		for(int i = str.length()-1;i>=0;i--) {
+			rev1.append(str.charAt(i));
+		}
+		System.out.println("Reversed String is: "+rev1.toString());
+		int count = 0;
+		for(int i=0;i< str.length();i++) {
+			if(str.toLowerCase().charAt(i) == 'a'||str.toLowerCase().charAt(i) == 'e'||str.toLowerCase().charAt(i) == 'i'||str.toLowerCase().charAt(i) == 'o'||str.toLowerCase().charAt(i) == 'u') {
+				count++;
+			}
+		}
+		System.out.println("Number of vowels in the given string is: "+count);
+
+	}
+
+}
