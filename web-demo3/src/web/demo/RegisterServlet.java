@@ -1,11 +1,15 @@
 package web.demo;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.Session;
 
 import web.demo.model.Students;
 import web.demo.model.StudentsDao;
@@ -30,7 +34,36 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String nm_del = request.getParameter("del_name").trim();
+		String nm_edit = request.getParameter("edit_name").trim();
+		
+		System.out.println(nm_del);
+		System.out.println(nm_edit);
+		
+		if(request.getParameter("delBtn")!=null) {
+			
+			//Students s = get
+			StudentsDao.delete(nm_del);
+			//StudentsDao.shutdown();
+		}
+		else if(request.getParameter("editBtn")!=null) {
+			
+			StudentsDao.tblUpdate(nm_edit, "x@gmail.com");
+			//StudentsDao.shutdown();
+		}
+		
+		List<Students> students = null;
+		students = StudentsDao.display();
+		
+		
+		
+		request.setAttribute("students", students);
+		
+		request.getRequestDispatcher("page2.jsp").forward(request, response);
+		
+		
 	}
 
 	/**
@@ -47,7 +80,16 @@ public class RegisterServlet extends HttpServlet {
 		
 		Students student = new Students(name, email, phone, batch);
 		StudentsDao.create(student);
-		StudentsDao.shutdown();
+		
+		List<Students> students = null;
+		students = StudentsDao.display();
+		
+		//StudentsDao.shutdown();
+		
+		request.setAttribute("students", students);
+		
+		request.getRequestDispatcher("register.jsp").forward(request, response);
+		
 	}
 
 }
