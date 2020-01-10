@@ -7,7 +7,7 @@
 <title>Prescription-Medicine</title>
 </head>
 <body>
-	<form action="register" method="get">
+	<form action="register" method="post">
 		Prescription ID: <input type= "number" name= 'prescription_id' />
 		<br>
 		Patient ID: <input type= "number" name= 'patient_id' />

@@ -24,6 +24,8 @@ public class RegisterServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	public static int count = 2;
+	
     public RegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -32,7 +34,7 @@ public class RegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String prescription_id = request.getParameter("prescription_id").trim();
@@ -54,20 +56,21 @@ public class RegisterServlet extends HttpServlet {
 		List<Prescription> presList = null;
 		presList.add(prescription);
 		
-		Medicine m = new Medicine(medID, med_name, persList);
+		Medicine m = new Medicine(medID, med_name, presList);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		
 		String name = request.getParameter("name").trim();
 		String email = request.getParameter("email").trim();
 		String regDate = request.getParameter("date").trim();
 		
-		Patient patient = new Patient(name, email, regDate);
+		Patient patient = new Patient(count++,name, email, regDate);
 		ClinicDao.createPatient(patient);
 		
 		List<Patient> patients = null;

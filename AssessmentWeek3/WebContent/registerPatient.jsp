@@ -9,7 +9,7 @@
 <title>Register Patient</title>
 </head>
 <body>
-	<form action="register" method="post">
+	<form action="register" method="get">
 		Name: <input type= 'text' name= 'name' />
 		<br>
 		Email: <input type= 'text' name= 'email' />

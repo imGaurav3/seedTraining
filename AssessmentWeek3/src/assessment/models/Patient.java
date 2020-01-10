@@ -39,8 +39,8 @@ public class Patient {
 		
 	}
 
-	public Patient(String name, String email, String date) {
-		this.id = count++;
+	public Patient(int id,String name, String email, String date) {
+		this.id = id;
 		this.name = name;
 		this.email = email;
 		Date = date;
